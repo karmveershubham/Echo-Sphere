@@ -8,6 +8,8 @@ import logo from "../../public/logo.png";
 import Link from "next/link";
 import { Github, Twitter, Youtube } from "lucide-react";
 import Cookies from "js-cookie";
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default function Login() {
   const [identifier, setEmail] = useState("");
@@ -26,8 +28,8 @@ export default function Login() {
         setLoading(false);
         return;
       }
-
-      const res = await fetch("http://localhost:1337/api/auth/local", {
+      console.log(process.env.STRAPI_URL);
+      const res = await fetch(`https://excellent-unity-064ce13de1.strapiapp.com/api/auth/local`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

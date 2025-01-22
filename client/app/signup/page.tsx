@@ -8,6 +8,8 @@ import Link from "next/link";
 import logo from '../../public/logo.png'
 import { Github, Twitter, Youtube } from "lucide-react";
 import Cookies from "js-cookie";
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 export default function RegisterPage() {
@@ -34,7 +36,7 @@ export default function RegisterPage() {
             return;
         }
 
-        const res = await fetch('http://localhost:1337/api/auth/local/register', {
+        const res = await fetch(`https://excellent-unity-064ce13de1.strapiapp.com/api/auth/local/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

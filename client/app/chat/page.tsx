@@ -11,6 +11,8 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from '../../public/logo.png'
 import Cookies from "js-cookie";
+import dotenv from 'dotenv';
+dotenv.config();
 
 interface Message {
   id: string;
@@ -43,7 +45,7 @@ export default function Chat() {
 
     const connectWebSocket = () => {
       try {
-        const websocket = new WebSocket('http://localhost:1337');
+        const websocket = new WebSocket(`https://excellent-unity-064ce13de1.strapiapp.com`);
         
         websocket.onopen = () => {
           setIsConnected(true);
@@ -94,7 +96,7 @@ export default function Chat() {
       };
 
       try {
-        const response = await fetch("http://localhost:1337/api/users/me", {
+        const response = await fetch("https://excellent-unity-064ce13de1.strapiapp.com/api/users/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
